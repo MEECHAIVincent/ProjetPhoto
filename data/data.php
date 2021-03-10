@@ -10,3 +10,5 @@ if($conn === false){
     die("ERREUR : Impossible de se connecter. " . mysqli_connect_error());
 }
 ?>
+
+<?php $pdo = new PDO("mysql:host=localhost;dbname=libphoto", "root", "" , array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION)); ?>

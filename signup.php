@@ -15,7 +15,7 @@
 
 		<?php //Page d'inscription 
 
-if (isset($_REQUEST['login'], $_REQUEST['nom'], $_REQUEST['mdp'], $_REQUEST['prenom'])){
+if (isset($_REQUEST['login'], $_REQUEST['nom'], $_REQUEST['mdp'], $_REQUEST['prenom'], $_REQUEST['email'], $_REQUEST['date_naissance'])){
 	// récupérer le nom d'utilisateur et supprimer les antislashes ajoutés par le formulaire
 	$login = stripslashes($_REQUEST['login']);
 	$login = mysqli_real_escape_string($conn, $login); 
@@ -25,21 +25,22 @@ if (isset($_REQUEST['login'], $_REQUEST['nom'], $_REQUEST['mdp'], $_REQUEST['pre
 	// récupérer le mot de passe et supprimer les antislashes ajoutés par le formulaire
 	$mdp = stripslashes($_REQUEST['mdp']);
     $mdp = mysqli_real_escape_string($conn, $mdp);
-    // récupérer le téléphone et supprimer les antislashes ajoutés par le formulaire
+    // récupérer le prénom et supprimer les antislashes ajoutés par le formulaire
 	$prenom = stripslashes($_REQUEST['prenom']);
     $prenom = mysqli_real_escape_string($conn, $prenom);
+	// récupérer le mail et supprimer les antislashes ajoutés par le formulaire
+	$email = stripslashes($_REQUEST['email']);
+    $email = mysqli_real_escape_string($conn, $email);
+	// récupérer la date_naissance et supprimer les antislashes ajoutés par le formulaire
+	$date_naissance = stripslashes($_REQUEST['date_naissance']);
+	$date_naissance = mysqli_real_escape_string($conn, $date_naissance);
 
 	//requéte SQL + mot de passe crypté
-    $query = "INSERT into `users` (login, nom, mdp, prenom)
-              VALUES ('$login', '$nom', '".hash('sha256', $mdp)."', '$prenom')";
+    $query = "INSERT into `users` (login, nom, mdp, prenom, email, date_naissance, admin)
+              VALUES ('$login', '$nom', '".hash('sha256', $mdp)."', '$prenom', '$email', '$date_naissance', 0)";
 	// Exécute la requête sur la base de données
     $res = mysqli_query($conn, $query);
-    if($res){
-
-
-
-			 
-			 ?>
+    if($res){ ?>
 				<div class="alert alert-success">
 					<b>Votre inscription est réussi.</b> 
 					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -77,24 +78,25 @@ if (isset($_REQUEST['login'], $_REQUEST['nom'], $_REQUEST['mdp'], $_REQUEST['pre
 								</div>
 
 								<div class="top-margin">
-									
+									<label>Date de naissance<span class="text-danger">*</span></label>
+									<input type="date" name="date_naissance" class="form-control">
+								</div>
+
+								<div class="top-margin">
+									<label>Email<span class="text-danger">*</span></label>
+									<input type="email" name="email" class="form-control">
+								</div>
+
+								<div class="top-margin">
 										<label>Mot de passe <span class="text-danger">*</span></label>
 										<input type="password" name="mdp" class="form-control">
-								
 								</div>
 
 								<hr>
 
 								<div class="row">
-									<div class="col-lg-8">
-										<label class="checkbox">
-											<input type="checkbox"> 
-											J'ai lu et j'accepte les <a href="page_terms.html">termes et conditions</a>
-										</label>                        
-									</div>
 									<div class="col-lg-4 text-right">
 										<button class="btn btn-action" type="submit">S'inscrire</button>
-										
 									</div>
 								</div>
 							</form>
@@ -143,6 +145,16 @@ if (isset($_REQUEST['login'], $_REQUEST['nom'], $_REQUEST['mdp'], $_REQUEST['pre
 								</div>
 
 								<div class="top-margin">
+									<label>Date de naissance<span class="text-danger">*</span></label>
+									<input type="date" name="date_naissance" class="form-control">
+								</div>
+
+								<div class="top-margin">
+									<label>Email<span class="text-danger">*</span></label>
+									<input type="email" name="email" class="form-control">
+								</div>
+
+								<div class="top-margin">
 									
 										<label>Mot de passe <span class="text-danger">*</span></label>
 										<input type="password" name="mdp" class="form-control">
@@ -152,12 +164,6 @@ if (isset($_REQUEST['login'], $_REQUEST['nom'], $_REQUEST['mdp'], $_REQUEST['pre
 								<hr>
 
 								<div class="row">
-									<div class="col-lg-8">
-										<label class="checkbox">
-											<input type="checkbox"> 
-											J'ai lu et j'accepte les <a href="page_terms.html">termes et conditions</a>
-										</label>                        
-									</div>
 									<div class="col-lg-4 text-right">
 										<button class="btn btn-action" type="submit">S'inscrire</button>
 										
