@@ -35,7 +35,7 @@
         <script type="text/javascript" src="JQUERY/jquery-3.1.1.js"></script>
         
         
-	<div class="navbar navbar-inverse navbar-fixed-top headroom" >
+	<div class="navbar navbar-inverse" >
 		<div class="container">
 			<div class="navbar-header">
 				<!-- Button for smallest screens -->
@@ -45,14 +45,12 @@
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right">
 					<li><a href="index.php">Accueil</a></li>
-					<li><a href="nvarticle.php">Ajouter les Posts</a></li>
-					<li><a href="allarticles.php">Voir les Posts</a></li>
 					<li><a href="allphoto.php">Photo</a></li>
 					<!-- <li><a href="nvarticle.php">Nouvel article</a></li> -->
 					
 					<?php
 						if (isset($_SESSION['login']) && !empty($_SESSION['login']) && $_SESSION['admin']==0 ){?>
-                                                                
+								<li><a href="addpost.php">Ajouter une post</a></li>
 								<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Mon compte<b class="caret"></b></a>
 									<ul class="dropdown-menu">
@@ -63,12 +61,13 @@
 								<li><a class="btn" href="logout.php">Déconnexion</a></li>
 								
                                         <?php  }else if (isset($_SESSION['login']) && !empty($_SESSION['login'])&& $_SESSION['admin']==1) {	?>
-                                                                <li class="dropdown">
+								<li><a href="addpost.php">Ajouter une post</a></li>
+                                <li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Administration<b class="caret"></b></a>
 									<ul class="dropdown-menu">
-											<li><a href="gestionuser.php">Gestion utilisateur</a></li>
+											<li><a href="gestionuser.php">Gestion des utilisateurs</a></li>
                                                                             	
-                                            <li><a href="gestionarticle.php">Gestion article</a></li>
+                                            <li><a href="gestionarticle.php">Gestion des photos</a></li>
 									</ul>
 								</li>
                                                                 <li class="dropdown">

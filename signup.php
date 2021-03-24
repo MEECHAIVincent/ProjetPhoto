@@ -6,10 +6,10 @@
 	<!-- container -->
 	<div class="container">
 
-		<ol class="breadcrumb">
+		<!-- <ol class="breadcrumb">
 			<li><a href="index.php">Accueil</a></li>
 			<li class="active">Inscription</li>
-		</ol>
+		</ol> -->
 
 
 
@@ -59,7 +59,7 @@ if (isset($_REQUEST['login'], $_REQUEST['nom'], $_REQUEST['mdp'], $_REQUEST['pre
 					<div class="panel panel-default">
 						<div class="panel-body">
 							<h3 class="thin text-center">S'inscrire</h3>
-							<p class="text-center text-muted">Vous êtes déjà inscrit? Connectez vous dès maintenant <a href="signin.php">ici</a> . </p>
+							<p class="text-center text-muted">Entrez vos informations pour vous connecter. </p>
 							<hr>
 
 							<form action="" method="post">
@@ -95,6 +95,10 @@ if (isset($_REQUEST['login'], $_REQUEST['nom'], $_REQUEST['mdp'], $_REQUEST['pre
 								<hr>
 
 								<div class="row">
+									<div class="col-lg-8">
+										<b><a href="signin.php">Déjà inscrit?</a></b>
+									</div>
+
 									<div class="col-lg-4 text-right">
 										<button class="btn btn-action" type="submit">S'inscrire</button>
 									</div>
@@ -126,7 +130,7 @@ if (isset($_REQUEST['login'], $_REQUEST['nom'], $_REQUEST['mdp'], $_REQUEST['pre
 					<div class="panel panel-default">
 						<div class="panel-body">
 							<h3 class="thin text-center">S'inscrire</h3>
-							<p class="text-center text-muted">Vous êtes déjà inscrit? Connectez vous dès maintenant <a href="signin.php">ici</a> . </p>
+							<p class="text-center text-muted">Entrez vos informations pour vous connecter. </p>
 							<hr>
 
 							<form action="" method="post">
@@ -164,6 +168,10 @@ if (isset($_REQUEST['login'], $_REQUEST['nom'], $_REQUEST['mdp'], $_REQUEST['pre
 								<hr>
 
 								<div class="row">
+									<div class="col-lg-8">
+										<b><a href="signin.php">Déjà inscrit?</a></b>
+									</div>
+
 									<div class="col-lg-4 text-right">
 										<button class="btn btn-action" type="submit">S'inscrire</button>
 										

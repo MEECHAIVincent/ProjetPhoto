@@ -28,10 +28,10 @@ if (isset($_POST['login'])){
 	<!-- container -->
 	<div class="container">
 
-		<ol class="breadcrumb">
+		<!-- <ol class="breadcrumb">
 			<li><a href="index.php">Accueil</a></li>
 			<li class="active">Connexion</li>
-		</ol>
+		</ol> -->
 
 		<div class="row">
 			
@@ -45,7 +45,7 @@ if (isset($_POST['login'])){
 					<div class="panel panel-default">
 						<div class="panel-body">
 							<h3 class="thin text-center">Connectez vous à votre compte</h3>
-							<p class="text-center text-muted"> Vous n'êtes pas encore inscrit? Inscrivez vous dès maintenant <a href="signup.php">ici</a>.</p>
+							<p class="text-center text-muted">Entrez vos identifiants pour vous inscrire.</p>
 							<hr>
 							
 							<form action="" method="post" name="login">
