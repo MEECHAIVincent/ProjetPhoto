@@ -20,11 +20,11 @@ if (!empty($_POST) && !empty($_FILES)) {
     $_POST['objectif'] = htmlentities($_POST['objectif']);
     $obj = $_POST["objectif"] ;
     $obj = addslashes($obj); //pour ajouter des slashes pour prendre en compte les apostrophes
-    var_dump($obj);
+  
     
     $_POST['appareil'] = htmlentities($_POST['appareil']);
     $app = $_POST["appareil"] ;
-    var_dump($app);
+
 
     if (!empty($obj)) {
         $requete = mysqli_query($conn,"SELECT id from appareil  where appareil='$app' AND objectif='$obj' ");; //selectionne l'id de l'utilisateur pour savoir qui a publié l'article
@@ -33,18 +33,17 @@ if (!empty($_POST) && !empty($_FILES)) {
     }
     $data = mysqli_fetch_assoc($requete);
     $id_app = $data['id'];
-    var_dump($id_app);
-
+ 
     $_POST['description'] = htmlentities($_POST['description']);
     $desc = $_POST["description"] ;
     $desc = addslashes($desc); //pour ajouter des slashes pour prendre en compte les apostrophes
-    var_dump($desc);
+  
 
     $login = $_SESSION['login'];
     $requete = mysqli_query($conn,"SELECT id from users  where login='$login'");; //selectionne l'id de l'utilisateur pour savoir qui a publié l'article
     $data = mysqli_fetch_assoc($requete);
     $aut = $data['id'];
-    var_dump($aut);
+   
 
 
     $file_name = $_FILES['photo']['name'];
@@ -55,14 +54,13 @@ if (!empty($_POST) && !empty($_FILES)) {
 
     $extensions_autorisees = array('.jpg', '.jpeg', '.gif', '.png' );
 
-    if(in_array($file_extension, $extensions_autorisees)){
         // var_dump(move_uploaded_file($file_tmp_name, $file_dest ));
         // if(move_uploaded_file($file_tmp_name, $file_dest )){
             //Insert les donnée de l'article de l'utilisateur dans la bdd 
             // $requete2 = "INSERT into post(id_article, film, realisateur,date_sortie, categorie, note, commentaire, auteur, affiche, date_publication, statut) values(NULL,?,?,?,?,?,?,?,?,CURRENT_TIMESTAMP, 0)";  
-            $requete2 = "INSERT into post(image, description, id_user, id_appareil, date_publication) values(?,?,?,?,CURRENT_TIMESTAMP)";  
-            
+            $requete2 = "INSERT INTO `post` (`id`, `image`, `description`, `id_user`, `id_appareil`, `date_publication`) VALUES (NULL, '$file_dest', '$desc', $aut, $id_app, CURRENT_TIMESTAMP);";  
             var_dump($requete2);
+            
             $resultat2 = mysqli_query($conn, $requete2);
             // mysqli_stmt_bind_param($resultat2, "ssssssss", $file_dest, $desc, $aut, $id_app);
             // mysqli_stmt_execute($resultat2);
@@ -78,10 +76,6 @@ if (!empty($_POST) && !empty($_FILES)) {
         // else{
         //     echo "Une erreur est survenue";
         // }
-    }
-    else{ 
-          echo "Votre photo doit être au format jpg, jpeg, gif ou png ";
-    }   
 }
 ?>
 	<!-- container -->
