@@ -1,0 +1,61 @@
+body {
+  font: 14px sans-serif;
+}
+main{
+    margin: 3em;
+}
+
+.navbar {
+    width: 100%;
+    height: auto;
+    background-color: blanchedalmond;
+    /* background-color: rgb(54, 51, 51); */
+    padding: 0 10px 0 10px ;
+
+    
+}
+.navbar ul{
+    margin: 0;
+    width: auto;
+    right: 10px;
+}
+.navbar li{
+    font-size: large;
+    list-style-type: none;
+    display: inline;
+    margin: 10px;
+    color: white;
+    float: right;
+    padding: 5px 10px 0 0 ;
+}
+
+.navbar a h5 {
+    text-decoration: none;
+    color: white;
+}
+
+.navbar button{
+    border-radius: 15px;
+    background-color: black ;
+    padding: 5px;
+    outline: none;
+}
+
+.navbar button ::after{
+    background-color: grey ;
+}
+
+.title{
+    padding-left: 10px ;
+    float: left;
+    color: black;
+}
+
+.wrapper {
+    margin: auto;
+    border: lightgrey solid 1px;
+    border-radius: 15px;
+    width: 350px;
+    padding: 20px;
+    box-shadow: rgba(211, 211, 211, 0.685) 2px 2px;
+}
