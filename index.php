@@ -31,19 +31,21 @@
             while ($data = $result->fetch(PDO::FETCH_OBJ)) {
 			?>
 			
-				<div class="col-12 col-md-6 mb-4 highlight">
+				<div class="col-md-6 mb-4 highlight">
 					<div class="h-body text-center">
 						<form method="POST" action="detailpost.php">
 						<input type="hidden" name="id" value=' <?php echo $data->id; ?>'>
 						<img src="<?php echo $data->image ?>" alt="img_bdd" class="img-responsive">
 						<article>
-                        Description :
-						<?php echo substr($data->description, 0,220). "..."; ?>
+                            Description :<?php echo substr($data->description, 0,220). "..."; ?>
 						</article>
-						Publié par : <?php echo $data->login; ?>/10
-						<br>
+                        <p>
+						    Publié par : <?php echo $data->login; ?>
+                        </p>
+                        <small> Le : <?php echo $data->date_publication; ?> </small>
+						<p>
 						<input type="submit" class="btn btn-primary" value="Regarder ce post">
-						</p>
+                        </p>
 						</form>
 					</div>
 				</div>
