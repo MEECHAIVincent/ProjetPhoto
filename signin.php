@@ -28,10 +28,10 @@ if (isset($_POST['login'])){
 	<!-- container -->
 	<div class="container">
 
-		<!-- <ol class="breadcrumb">
+		<ol class="breadcrumb">
 			<li><a href="index.php">Accueil</a></li>
 			<li class="active">Connexion</li>
-		</ol> -->
+		</ol>
 
 		<div class="row">
 			
