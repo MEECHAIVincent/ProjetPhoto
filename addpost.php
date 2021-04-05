@@ -27,10 +27,19 @@ if (!empty($_POST) && !empty($_FILES)) {
 
 
     if (!empty($obj)) {
-        $requete = mysqli_query($conn,"SELECT id from appareil  where appareil='$app' AND objectif='$obj' ");; //selectionne l'id de l'utilisateur pour savoir qui a publié l'article
+        $requete = mysqli_query($conn,"SELECT id from appareil  where appareil='$app' AND objectif='$obj' "); 
+        // if ($requete == false){
+        //     mysqli_query($conn,"INSERT INTO `appareil`(`appareil`, `objectif`) VALUES ('$app','$obj')");
+        //     $requete = mysqli_query($conn,"SELECT id from appareil  where appareil='$app' AND objectif='$obj' ");
+        // }
     } else {
-        $requete = mysqli_query($conn,"SELECT id from appareil  where appareil='$app'");; //selectionne l'id de l'utilisateur pour savoir qui a publié l'article
+        $requete = mysqli_query($conn,"SELECT id from appareil  where appareil='$app'"); 
+        // if ($requete == false){
+        //     var_dump(mysqli_query($conn,"INSERT INTO `appareil`(`appareil`) VALUES ('$app')"));
+        //     $requete = mysqli_query($conn,"SELECT id from appareil  where appareil='$app'");
+        // }    
     }
+
     $data = mysqli_fetch_assoc($requete);
     $id_app = $data['id'];
  
@@ -40,7 +49,7 @@ if (!empty($_POST) && !empty($_FILES)) {
   
 
     $login = $_SESSION['login'];
-    $requete = mysqli_query($conn,"SELECT id from users  where login='$login'");; //selectionne l'id de l'utilisateur pour savoir qui a publié l'article
+    $requete = mysqli_query($conn,"SELECT id from users  where login='$login'"); //selectionne l'id de l'utilisateur pour savoir qui a publié l'article
     $data = mysqli_fetch_assoc($requete);
     $aut = $data['id'];
    
@@ -54,7 +63,7 @@ if (!empty($_POST) && !empty($_FILES)) {
 
     $extensions_autorisees = array('.jpg', '.jpeg', '.gif', '.png' );
 
-        // var_dump(move_uploaded_file($file_tmp_name, $file_dest ));
+        move_uploaded_file($file_tmp_name, $file_dest );
         // if(move_uploaded_file($file_tmp_name, $file_dest )){
             //Insert les donnée de l'article de l'utilisateur dans la bdd 
             // $requete2 = "INSERT into post(id_article, film, realisateur,date_sortie, categorie, note, commentaire, auteur, affiche, date_publication, statut) values(NULL,?,?,?,?,?,?,?,?,CURRENT_TIMESTAMP, 0)";  
