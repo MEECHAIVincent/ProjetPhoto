@@ -64,7 +64,7 @@ $result = $pdo->query("SELECT * FROM users WHERE login = '" . $_SESSION['login']
 	<div class="container">
 		
 		<ol class="breadcrumb">
-			<li><a href="index.html">Accueil</a></li>
+			<li><a href="index.php">Accueil</a></li>
 			<li class="active">Mes informations</li>
 		</ol>
 

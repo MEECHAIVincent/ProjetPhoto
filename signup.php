@@ -41,6 +41,13 @@ if (isset($_REQUEST['login'], $_REQUEST['nom'], $_REQUEST['mdp'], $_REQUEST['pre
 	// Exécute la requête sur la base de données
     $res = mysqli_query($conn, $query);
     if($res){ ?>
+
+				<ol class="breadcrumb">
+					<li><a href="index.php">Accueil</a></li>
+					<li><a href="signin.php">Connexion</a></li>
+					<li class="active">Inscription</li>
+				</ol>
+
 				<div class="alert alert-success">
 					<b>Votre inscription est réussi.</b> 
 					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -117,6 +124,12 @@ if (isset($_REQUEST['login'], $_REQUEST['nom'], $_REQUEST['mdp'], $_REQUEST['pre
     }
 }else{ 
 ?>
+
+		<ol class="breadcrumb">
+			<li><a href="index.php">Accueil</a></li>
+			<li><a href="signin.php">Connexion</a></li>
+			<li class="active">Inscription</li>
+		</ol>
 
 		<div class="row">
 			

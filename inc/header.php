@@ -1,7 +1,7 @@
 <?php
 //require 'connect.php';
-	// Initialiser la session
-        session_start();
+// Initialiser la session
+session_start();
         
 ?>
 
@@ -12,18 +12,12 @@
 	<meta charset="utf-8">
 	<meta name="viewport"    content="width=device-width, initial-scale=1.0">
 
-	<title>Projet Photo</title>
-
+	<title>LibPhoto</title>
 
 	<link rel="stylesheet" media="screen" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
-	<!-- <meta name="viewport"    content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="">
-	<meta name="author"      content="Sergey Pozhilov (GetTemplate.com)"> -->
-	
-	<!-- <title>LibPhoto</title> -->
+	<meta name="viewport"  content="width=device-width, initial-scale=1.0">
 
-	<link rel="shortcut icon" href="assets/images/gt_favicon.png">
-	
+	<!-- <link rel="shortcut icon" href="assets/images/gt_favicon.png">-->
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="assets/css/font-awesome.min.css">
 
@@ -45,8 +39,6 @@
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right">
 					<li><a href="index.php">Accueil</a></li>
-					<li><a href="allphoto.php">Photo</a></li>
-					<!-- <li><a href="nvarticle.php">Nouvel article</a></li> -->
 					
 					<?php
 						if (isset($_SESSION['login']) && !empty($_SESSION['login']) && $_SESSION['admin']==0 ){?>
@@ -70,8 +62,8 @@
                                             <li><a href="gestionarticle.php">Gestion des photos</a></li>
 									</ul>
 								</li>
-                                                                <li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Mon compte<b class="caret"></b></a>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">Mon compte<b class="caret"></b></a>
 									<ul class="dropdown-menu">
 											<li><a href="profile.php">Mes informations</a></li>
 									</ul>
