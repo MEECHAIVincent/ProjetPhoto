@@ -24,7 +24,7 @@ session_start();
 	<!-- Custom styles for our template -->
 	<link rel="stylesheet" href="assets/css/bootstrap-theme.css" media="screen" >
 	<link rel="stylesheet" href="assets/css/main.css">
-	<!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+	<link rel="stylesheet" href="assets/css/style.css">
 
         <script type="text/javascript" src="JQUERY/jquery-3.1.1.js"></script>
         
@@ -83,6 +83,5 @@ session_start();
         
 // }
         ?>
-	<header id="head" class="secondary"></header>
 </head>
 <?php include "data\data.php" ?>

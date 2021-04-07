@@ -3,11 +3,13 @@
 
 <body>
 	<!-- Intro -->
-	<div class="container text-center">
-		<h2 class="thin">LibPhoto est l'application qui permet de partager ses posts photos et voir les commentaire etc.</h2>
-		<p class="text-muted">
-			Consultez les posts ou bien ajoutez les vôtres afin de pouvoir partager vos avis sur vos posts favoris! 
-		</p>
+	<div class="index--background">
+		<div class="container text-center" style="height: 576px; color:white">
+			<h2 class="thin">LibPhoto est l'application qui permet de partager ses posts photos et voir les commentaire etc.</h2>
+			<p class="text-muted">
+				Consultez les posts ou bien ajoutez les vôtres afin de pouvoir partager vos avis sur vos posts favoris! 
+			</p>
+		</div>
 	</div>
 		
 	<!-- Highlights - jumbotron -->
@@ -54,6 +56,15 @@
 									<p> Description : <?php echo substr($data->description, 0,220). "..."; ?></p>
 									
 								</div>
+								<!-- AddToAny BEGIN -->
+								<div class="a2a_kit a2a_kit_size_32 a2a_default_style" style="background-color: grey; padding-left:auto; padding-right:auto; margin-bottom: 10px;" >
+									<a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+									<a class="a2a_button_facebook"></a>
+									<a class="a2a_button_twitter"></a>
+									<a class="a2a_button_email"></a>
+								</div>
+								<script async src="https://static.addtoany.com/menu/page.js"></script>
+                            <!-- AddToAny END -->
 
 								<div class="card-title">
 									<input type="submit" class="btn btn-primary" value="Regarder ce post">
