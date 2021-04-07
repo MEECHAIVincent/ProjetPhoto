@@ -1,12 +1,6 @@
 <?php include "inc\header.php";
 ?>
 
-<?php 
-// if (empty($_GET['login']) && empty($_SESSION['login'])) {
-//     header('Location: signin.php');
-//     die;
-// } 
-?>
 <body>
 	<!-- Intro -->
 	<div class="container text-center">
@@ -32,7 +26,9 @@
 			?>
 				<div class="col-md-6 mb-4 highlight">
 					<div class="card">
-						<a href="detailpost.php">
+						
+						<form method="POST" action="detailpost.php">
+							<input type="hidden" name="id" value=' <?php echo $data->id; ?>'>
 							<!-- Image à la une -->
 							<div class="card-image"><img src="<?php echo $data->image; ?>" alt="img_bdd" /></div>
 							<!-- Fin de l'image à la une -->
@@ -56,11 +52,16 @@
 								<!-- Extrait de l'article -->
 								<div class="card-excerpt">
 									<p> Description : <?php echo substr($data->description, 0,220). "..."; ?></p>
+									
 								</div>
+
+								<div class="card-title">
+									<input type="submit" class="btn btn-primary" value="Regarder ce post">
+								</div>		
 
 							</div>
 							<!-- Fin du corp de notre carte -->
-						</a>
+						</form>
 					</div>
 				</div>
 
