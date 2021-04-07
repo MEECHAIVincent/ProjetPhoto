@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mer. 24 mars 2021 à 16:24
+-- Généré le : mer. 07 avr. 2021 à 10:24
 -- Version du serveur :  5.7.31
 -- Version de PHP : 7.3.21
 
@@ -45,6 +45,7 @@ DROP TABLE IF EXISTS `commentaire`;
 CREATE TABLE IF NOT EXISTS `commentaire` (
   `id_post` int(11) DEFAULT NULL,
   `id_user` int(11) DEFAULT NULL,
+  `user_nom` varchar(255) NOT NULL,
   `publication` datetime DEFAULT NULL,
   `commentaire` varchar(255) DEFAULT NULL,
   KEY `id_post` (`id_post`),
@@ -60,11 +61,11 @@ CREATE TABLE IF NOT EXISTS `commentaire` (
 DROP TABLE IF EXISTS `post`;
 CREATE TABLE IF NOT EXISTS `post` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `image` varchar(45) DEFAULT NULL,
-  `description` varchar(45) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
   `id_user` int(11) DEFAULT NULL,
   `id_appareil` int(11) DEFAULT NULL,
-  `date_publication` datetime NOT NULL,
+  `date_publication` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `id_user` (`id_user`),
   KEY `id_appareil` (`id_appareil`)
@@ -79,13 +80,14 @@ CREATE TABLE IF NOT EXISTS `post` (
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nom` varchar(45) DEFAULT NULL,
+  `img` varchar(255) NOT NULL DEFAULT './assets/images/default.jpg',
+  `nom` varchar(255) DEFAULT NULL,
   `prenom` varchar(45) DEFAULT NULL,
   `login` varchar(45) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `mdp` varchar(255) DEFAULT NULL,
   `date_naissance` date DEFAULT NULL,
-  `inscription` datetime DEFAULT NULL,
+  `inscription` datetime DEFAULT CURRENT_TIMESTAMP,
   `admin` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;

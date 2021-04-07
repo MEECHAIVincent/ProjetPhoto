@@ -27,17 +27,19 @@ if (!empty($_POST) && !empty($_FILES)) {
 
 
     if (!empty($obj)) {
-        $requete = mysqli_query($conn,"SELECT id from appareil  where appareil='$app' AND objectif='$obj' "); 
-        // if ($requete == false){
-        //     mysqli_query($conn,"INSERT INTO `appareil`(`appareil`, `objectif`) VALUES ('$app','$obj')");
-        //     $requete = mysqli_query($conn,"SELECT id from appareil  where appareil='$app' AND objectif='$obj' ");
-        // }
+        $requete = mysqli_query($conn,"SELECT id from appareil  where appareil='$app' AND objectif='$obj' ");
+        $row = $requete->num_rows;
+        if (!$row == 2){
+            mysqli_query($conn,"INSERT INTO `appareil`(`appareil`, `objectif`) VALUES ('$app','$obj')");
+            $requete = mysqli_query($conn,"SELECT id from appareil  where appareil='$app' AND objectif='$obj' ");
+        }
     } else {
         $requete = mysqli_query($conn,"SELECT id from appareil  where appareil='$app'"); 
-        // if ($requete == false){
-        //     var_dump(mysqli_query($conn,"INSERT INTO `appareil`(`appareil`) VALUES ('$app')"));
-        //     $requete = mysqli_query($conn,"SELECT id from appareil  where appareil='$app'");
-        // }    
+        $row = $requete->num_rows;
+        if (!$row == 2){
+            var_dump(mysqli_query($conn,"INSERT INTO `appareil`(`appareil`) VALUES ('$app')"));
+            $requete = mysqli_query($conn,"SELECT id from appareil  where appareil='$app'");
+        }    
     }
 
     $data = mysqli_fetch_assoc($requete);
@@ -108,7 +110,6 @@ if (!empty($_POST) && !empty($_FILES)) {
                         <h3>Photo</h3>
                         <label for="myfile">Selectionnez une photo</label>
                         <input type="file" id="photo" name="photo" required><br><br>
-
                     </div>
 
                     <div class="form-group">

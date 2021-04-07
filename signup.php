@@ -16,28 +16,40 @@
 		<?php //Page d'inscription 
 
 if (isset($_REQUEST['login'], $_REQUEST['nom'], $_REQUEST['mdp'], $_REQUEST['prenom'], $_REQUEST['email'], $_REQUEST['date_naissance'])){
-	// récupérer le nom d'utilisateur et supprimer les antislashes ajoutés par le formulaire
+	// récupére le nom d'utilisateur et supprime les antislashes ajoutés par le formulaire
 	$login = stripslashes($_REQUEST['login']);
 	$login = mysqli_real_escape_string($conn, $login); 
-	// récupérer l'nom et supprimer les antislashes ajoutés par le formulaire
+	// récupére le nom et supprime les antislashes ajoutés par le formulaire
 	$nom = stripslashes($_REQUEST['nom']);
 	$nom = mysqli_real_escape_string($conn, $nom);
-	// récupérer le mot de passe et supprimer les antislashes ajoutés par le formulaire
+	// récupére le mot de passe et supprime les antislashes ajoutés par le formulaire
 	$mdp = stripslashes($_REQUEST['mdp']);
     $mdp = mysqli_real_escape_string($conn, $mdp);
-    // récupérer le prénom et supprimer les antislashes ajoutés par le formulaire
+    // récupére le prénom et supprime les antislashes ajoutés par le formulaire
 	$prenom = stripslashes($_REQUEST['prenom']);
     $prenom = mysqli_real_escape_string($conn, $prenom);
-	// récupérer le mail et supprimer les antislashes ajoutés par le formulaire
+	// récupére le mail et supprime les antislashes ajoutés par le formulaire
 	$email = stripslashes($_REQUEST['email']);
     $email = mysqli_real_escape_string($conn, $email);
-	// récupérer la date_naissance et supprimer les antislashes ajoutés par le formulaire
+	// récupére la date_naissance et supprime les antislashes ajoutés par le formulaire
 	$date_naissance = stripslashes($_REQUEST['date_naissance']);
 	$date_naissance = mysqli_real_escape_string($conn, $date_naissance);
 
+	// récupére la date_naissance et supprime les antislashes ajoutés par le formulaire
+	// $photo = $_POST['photo'];
+	// $file_name = $_FILES[`$photo`]['name'];
+	// var_dump($file_name);
+    // $file_extension = strchr($file_name, ".");
+    // $file_tmp_name = $_FILES[`$photo`]['tmp_name'];
+    // $file_dest ="assets/profile/".$file_tmp_name;
+	// var_dump($file_dest);
+
+    // $extensions_autorisees = array('.jpg', '.jpeg', '.gif', '.png' );
+    // move_uploaded_file($file_tmp_name, $file_dest );
+
 	//requéte SQL + mot de passe crypté
     $query = "INSERT into `users` (login, nom, mdp, prenom, email, date_naissance, admin)
-              VALUES ('$login', '$nom', '".hash('sha256', $mdp)."', '$prenom', '$email', '$date_naissance', 0)";
+              VALUES ('$login' , '$nom', '".hash('sha256', $mdp)."', '$prenom', '$email', '$date_naissance', 0)";
 	// Exécute la requête sur la base de données
     $res = mysqli_query($conn, $query);
     if($res){ ?>
@@ -98,7 +110,12 @@ if (isset($_REQUEST['login'], $_REQUEST['nom'], $_REQUEST['mdp'], $_REQUEST['pre
 										<label>Mot de passe <span class="text-danger">*</span></label>
 										<input type="password" name="mdp" class="form-control">
 								</div>
-
+<!-- 
+								<div class="form-group">
+                        				<h3>Photo</h3>
+										<label for="myfile">Selectionnez une photo</label>
+										<input type="file" id="photo" name="photo"><br><br>
+								</div> -->
 								<hr>
 
 								<div class="row">
@@ -177,6 +194,12 @@ if (isset($_REQUEST['login'], $_REQUEST['nom'], $_REQUEST['mdp'], $_REQUEST['pre
 										<input type="password" name="mdp" class="form-control">
 								
 								</div>
+
+								<!-- <div class="form-group">
+                        				<h3>Photo</h3>
+										<label for="myfile">Selectionnez une photo</label>
+										<input type="file" id="photo" name="photo"><br><br>
+								</div> -->
 
 								<hr>
 
