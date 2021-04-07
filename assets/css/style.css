@@ -60,9 +60,4 @@ main{
     box-shadow: rgba(211, 211, 211, 0.685) 2px 2px;
 }
 
-.index--background {
-    background-image: url('../images/photo.webp');
-    background-size:100%; 
-    background-repeat: no-repeat;
-}
 
