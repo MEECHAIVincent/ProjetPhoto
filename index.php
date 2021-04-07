@@ -11,9 +11,9 @@
 		<hr/>
 		<form action="" method="post">
 			<select class="form-control" name="type">
-				<?php $result = $pdo->query("SELECT * FROM appareil");
+				<?php $result = $pdo->query("SELECT DISTINCT appareil FROM appareil");
 				while ($appareil = $result->fetch(PDO::FETCH_OBJ)) { ?>
-					<option name="appareil" value="<?php echo $appareil->id ?>"><?php echo $appareil->appareil ?></option>
+					<option name="appareil" value="<?php echo $appareil->appareil ?>"><?php echo $appareil->appareil ?></option>
 				<?php } ?>
 			</select>
 			<br>
@@ -35,7 +35,7 @@
 			<?php
 			if (isset($_POST['type'])) {
 				$appareil = $_POST['type'];
-				$result = $pdo->query("SELECT *  FROM `post` as p JOIN appareil as a on p.id_appareil = a.id JOIN users as u on p.id_user = u.id  WHERE p.id_appareil = '$appareil'   ");
+				$result = $pdo->query("SELECT *  FROM `post` as p JOIN appareil as a on p.id_appareil = a.id JOIN users as u on p.id_user = u.id  WHERE appareil = '$appareil'   ");
             while ($data = $result->fetch(PDO::FETCH_OBJ)) {
 			?>
 				<div class="col-md-6 mb-4 highlight">

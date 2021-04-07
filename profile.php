@@ -14,46 +14,6 @@ $requete = mysqli_query($conn, "SELECT id from users  where login='$login'");
 $data = mysqli_fetch_assoc($requete);
 $aut = $data['id'];
 
-//Récupérer les infos du profil et les modifier
-if (isset($_POST['newnom']) and !empty($_POST['newnom']) and isset($_POST['newnom'])) {
-    $newnom = htmlspecialchars($_POST['newnom']);
-    $pdo->query("UPDATE users SET nom = '$newnom' WHERE id = '$aut' ");
-
-    header('Location: profile.php');
-}
-
-if (isset($_POST['newprenom']) and !empty($_POST['newprenom']) and isset($_POST['newprenom'])) {
-    $newprenom = htmlspecialchars($_POST['newprenom']);
-    $pdo->query("UPDATE users SET prenom = '$newprenom' WHERE id = '$aut'");
-
-    header('Location: profile.php');
-}
-
-if (isset($_POST['newemail']) and !empty($_POST['newemail']) and isset($_POST['newemail'])) {
-    $newemail = htmlspecialchars($_POST['newemail']);
-    $pdo->query("UPDATE users SET email = '$newemail' WHERE login = '" . $_SESSION['login'] . "'");
-
-    header('Location: profile.php');
-}
-
-if (isset($_POST['newdate_naissance']) and !empty($_POST['newdate_naissance']) and isset($_POST['newdate_naissance'])) {
-    $newdate_naissance = htmlspecialchars($_POST['newdate_naissance']);
-    $pdo->query("UPDATE users SET date_naissance = '$newdate_naissance' WHERE login = '" . $_SESSION['login'] . "'");
-
-    header('Location: profile.php');
-}
-
-if (isset($_POST['newmdp']) and !empty($_POST['newmdp']) and isset($_POST['newmdp']) and $_POST['newmdp'] == $_POST['confirm']) {
-
-    $newmdp = stripslashes($_POST['newmdp']);
-    $pdo->query("UPDATE users SET mdp = '" . hash('sha256', $newmdp) . "' WHERE id= '$aut' ");
-
-    header('Location: profile.php');
-} else if(isset($_POST['newmdp']) and !empty($_POST['newmdp']) and isset($_POST['newmdp']) and $_POST['newmdp'] != $_POST['confirm']) { 
-	echo 'Vos mdp ne correspondent pas';
-	
-	header('Location: profile.php');
-}
 
 $result = $pdo->query("SELECT * FROM users WHERE login = '" . $_SESSION['login'] . "'");
     while ($user = $result->fetch(PDO::FETCH_OBJ)) {
@@ -79,7 +39,7 @@ $result = $pdo->query("SELECT * FROM users WHERE login = '" . $_SESSION['login']
 					<h1 class="page-title">Mes informations</h1>
 				</header>
 				<div>    
-                        <img style="width: 300px; float:left; padding-right: 15px; clear:left"  src="<?php echo $user->img; ?>"/>
+                        <img style="max-width: 20rem; float:left; padding-right: 15px; clear:left"  src="<?php echo $user->img; ?>"/>
                 </div>
                 <div>
                     <p> <b> nom: </b><?php echo $user->nom; ?></p> 
@@ -94,12 +54,51 @@ $result = $pdo->query("SELECT * FROM users WHERE login = '" . $_SESSION['login']
 				</div>
 				
 			</article>
+			
 			<!-- /Article -->
 		</div>
-			 
-			 <?php
-            }
-             ?>
+		<table class="profile--post">
+			<thead>
+				<tr>
+					<th>Image</th>
+					<th>Description</th>
+					<th>Appareil</th>
+					<th>Objectif</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+				<tbody>
+					<?php
+				}
+				$requete = $pdo->query("SELECT p.id as id, image, description, appareil, objectif FROM post as p JOIN appareil as a ON p.id_appareil=a.id WHERE p.id_user = $aut");
+				while ($posts = $requete->fetch(PDO::FETCH_OBJ)) {
+				?>
+					<tr>
+						<td>
+							<img src="<?php echo $posts->image ?>" style="width: 20rem;">
+						</td>
+						<td><?php echo $posts->description ?></td>
+						<td><?php echo $posts->appareil?></td>
+						<td><?php echo $posts->objectif?></td>
+						<td>
+							<form action="editpost.php" method="POST">
+								<input type="hidden" name="id" value=' <?php echo $posts->id; ?>'>
+								<input type="submit" class="btn btn-primary" value="Modifier">
+							</form>
+							<br/>
+							<form action="deletepost.php" method="POST">
+								<input type="hidden" name="id" value=' <?php echo $posts->id; ?>'>
+								<input type="submit" class="btn btn-danger" value="Supprimer">
+							</form>
+						</td>
+					</tr>
+					</tbody>
+				<?php
+					}
+				?>
+			</table>
+
+
 	</div>	<!-- /container -->
 
 
