@@ -49,7 +49,14 @@ if (isset($_POST['newmdp']) and !empty($_POST['newmdp']) and isset($_POST['newmd
     $pdo->query("UPDATE users SET mdp = '" . hash('sha256', $newmdp) . "' WHERE id= '$aut' ");
 
     header('Location: profile.php');
-}   
+} else if(isset($_POST['newmdp']) and !empty($_POST['newmdp']) and isset($_POST['newmdp']) and $_POST['newmdp'] != $_POST['confirm']) { 
+	echo 'Vos mdp ne correspondent pas';
+	
+	header('Location: profile.php');
+}
+
+
+
 
 
 
