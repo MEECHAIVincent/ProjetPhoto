@@ -48,7 +48,7 @@ if (empty($_GET['login']) && empty($_SESSION['login'])) {
                     </div>
                     <div>
                         <p> <b> Publié par: </b>'.$data->login.'</p> 
-                        <p> <b>Date de sortie: </b>'.$data->publication.'</p>
+                        <p> <b>Date de publication: </b>'.$data->publication.'</p>
                         <p> <b>Appareil utilisé: </b>'.$data->appareil.'</p>
                         <p> <b>Objectif utilisé: </b>'.$data->objectif.'</p>
                             <!-- AddToAny BEGIN -->

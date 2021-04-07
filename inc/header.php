@@ -42,7 +42,7 @@ session_start();
 					
 					<?php
 						if (isset($_SESSION['login']) && !empty($_SESSION['login']) && $_SESSION['admin']==0 ){?>
-								<li><a href="addpost.php">Ajouter une post</a></li>
+								<li><a href="addpost.php">Ajouter un post</a></li>
 								<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Mon compte<b class="caret"></b></a>
 									<ul class="dropdown-menu">
@@ -53,7 +53,7 @@ session_start();
 								<li><a class="btn" href="logout.php">Déconnexion</a></li>
 								
                                         <?php  }else if (isset($_SESSION['login']) && !empty($_SESSION['login'])&& $_SESSION['admin']==1) {	?>
-								<li><a href="addpost.php">Ajouter une post</a></li>
+								<li><a href="addpost.php">Ajouter un post</a></li>
                                 <li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Administration<b class="caret"></b></a>
 									<ul class="dropdown-menu">

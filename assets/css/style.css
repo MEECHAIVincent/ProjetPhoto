@@ -60,4 +60,26 @@ main{
     box-shadow: rgba(211, 211, 211, 0.685) 2px 2px;
 }
 
+.profile--post{
+    margin-top: 20px;
+}
 
+
+.profile--post table, th, td{
+    border: 1px solid black;
+
+}
+.profile--post th, td{
+    text-align: center;
+    min-width: 20rem;
+}
+
+.profile--post th{
+    background-color: black;
+    color: white;
+    padding: 8px;
+}
+
+.profile--post table{
+    width: 100%;
+}

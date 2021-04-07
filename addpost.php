@@ -37,7 +37,7 @@ if (!empty($_POST) && !empty($_FILES)) {
         $requete = mysqli_query($conn,"SELECT id from appareil  where appareil='$app'"); 
         $row = $requete->num_rows;
         if (!$row == 2){
-            var_dump(mysqli_query($conn,"INSERT INTO `appareil`(`appareil`) VALUES ('$app')"));
+            mysqli_query($conn,"INSERT INTO `appareil`(`appareil`) VALUES ('$app')");
             $requete = mysqli_query($conn,"SELECT id from appareil  where appareil='$app'");
         }    
     }
@@ -70,7 +70,6 @@ if (!empty($_POST) && !empty($_FILES)) {
             //Insert les donnée de l'article de l'utilisateur dans la bdd 
             // $requete2 = "INSERT into post(id_article, film, realisateur,date_sortie, categorie, note, commentaire, auteur, affiche, date_publication, statut) values(NULL,?,?,?,?,?,?,?,?,CURRENT_TIMESTAMP, 0)";  
             $requete2 = "INSERT INTO `post` (`image`, `description`, `id_user`, `id_appareil`, `date_publication`) VALUES ('$file_dest', '$desc', $aut, $id_app, CURRENT_TIMESTAMP);";  
-            var_dump($requete2);
             
             $resultat2 = mysqli_query($conn, $requete2);
             // mysqli_stmt_bind_param($resultat2, "ssssssss", $file_dest, $desc, $aut, $id_app);
