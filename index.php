@@ -30,23 +30,37 @@
                                     LIMIT 10");
             while ($data = $result->fetch(PDO::FETCH_OBJ)) {
 			?>
-			
 				<div class="col-md-6 mb-4 highlight">
-					<div class="h-body text-center">
-						<form method="POST" action="detailpost.php">
-						<input type="hidden" name="id" value=' <?php echo $data->id; ?>'>
-						<img src="<?php echo $data->image ?>" alt="img_bdd" class="img-responsive">
-						<article>
-                            Description :<?php echo substr($data->description, 0,220). "..."; ?>
-						</article>
-                        <p>
-						    Publié par : <?php echo $data->login; ?>
-                        </p>
-                        <small> Le : <?php echo $data->date_publication; ?> </small>
-						<p>
-						<input type="submit" class="btn btn-primary" value="Regarder ce post">
-                        </p>
-						</form>
+					<div class="card">
+						<a href="detailpost.php">
+							<!-- Image à la une -->
+							<div class="card-image"><img src="<?php echo $data->image; ?>" alt="img_bdd" /></div>
+							<!-- Fin de l'image à la une -->
+
+							<!-- Corp de notre carte -->
+							<div class="card-body">
+
+								<!-- Date de publication de l'article-->
+								<div class="card-date">
+									<p> Le :
+										<?php
+											echo date('d-m-Y',strtotime($data->date_publication));
+										?>
+									</p>
+								</div>
+
+								<!-- Titre de l'article -->
+								<div class="card-title">
+									<h3>Publié par : <?php echo $data->login; ?></h3>
+								</div>
+								<!-- Extrait de l'article -->
+								<div class="card-excerpt">
+									<p> Description : <?php echo substr($data->description, 0,220). "..."; ?></p>
+								</div>
+
+							</div>
+							<!-- Fin du corp de notre carte -->
+						</a>
 					</div>
 				</div>
 
